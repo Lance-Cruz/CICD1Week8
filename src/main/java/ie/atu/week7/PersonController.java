@@ -22,18 +22,23 @@ public class PersonController {
     public List<Person> all() {
         return service.findAll();
     }
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public Person byEmployeeId(@PathVariable String id) {
         return service.findByEmployeeId(id);
+    }*/
+
+    @GetMapping("/{id}")
+    public Person byId(@PathVariable Long id) {
+        return service.findById(id);
     }
 
     @PutMapping("/{id}")
-    public Person update(@Valid @RequestBody Person person) {
-        return service.update(person);
+    public Person update(@PathVariable Long id, @Valid @RequestBody Person person) {
+        return service.update(id, person);
     }
 
     @DeleteMapping
-    public Person delete(@Valid @RequestBody Person person) {
-        return service.delete(person);
+    public Person delete(@RequestParam Long id) {
+        return service.delete(id);
     }
 }
