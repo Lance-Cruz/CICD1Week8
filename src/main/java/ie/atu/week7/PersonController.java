@@ -22,10 +22,10 @@ public class PersonController {
     public List<Person> all() {
         return service.findAll();
     }
-    /*@GetMapping("/{id}")
-    public Person byEmployeeId(@PathVariable String id) {
-        return service.findByEmployeeId(id);
-    }*/
+    @GetMapping("/{employeeId}")
+    public Person byEmployeeId(@PathVariable String employeeId) {
+        return service.findByEmployeeId(employeeId);
+    }
 
     @GetMapping("/{id}")
     public Person byId(@PathVariable Long id) {
